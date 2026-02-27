@@ -8,16 +8,21 @@ import { SuggestionsComponent } from './suggestions.component';
 
 import { ListSuggestionComponent } from './list-suggestion/list-suggestion.component';
 import { SuggestionDetailsComponent } from './suggestion-details/suggestion-details.component';
+import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SuggestionsComponent,
-    SuggestionDetailsComponent
+    SuggestionDetailsComponent,
+    SuggestionFormComponent,
+    ListSuggestionComponent  
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SuggestionsRoutingModule
   ]
 })

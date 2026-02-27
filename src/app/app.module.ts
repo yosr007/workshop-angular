@@ -14,7 +14,6 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ListSuggestionComponent,
     HomeComponent,
     NotfoundComponent
   ],
