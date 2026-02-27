@@ -79,4 +79,8 @@ export class ListSuggestionComponent {
   goToDetails(id: number): void {
   this.router.navigate(['/suggestions', id]);
 }
+goToForm(): void {
+  // navigation vers le formulaire
+  this.router.navigate(['/suggestions/form']); 
+}
 }

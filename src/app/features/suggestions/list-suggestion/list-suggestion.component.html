@@ -7,9 +7,10 @@
   [(ngModel)]="searchText"
   class="search-bar"
 />
-
+<div class="list-header">
+  <button class="btn favorite-btn" (click)="goToForm()">Ajouter suggestion</button>
+</div>
 <div *ngFor="let s of filteredSuggestions" class="suggestion-card">
-
   <div class="header">
     <h3>{{ s.title }}</h3>
     <div>
@@ -39,6 +40,6 @@
     <button (click)="addToFavorites(s)" class="btn favorite-btn">
       Ajouter aux favoris
     </button>
-    <button (click)="goToDetails(s.id)">Details</button>
+    <button (click)="goToDetails(s.id)" class="btn favorite-btn">Details</button>
   </div>
 </div>
