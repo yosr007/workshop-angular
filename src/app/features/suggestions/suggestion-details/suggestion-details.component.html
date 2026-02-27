@@ -1,0 +1,15 @@
+<div *ngIf="suggestion; else notFound" class="suggestion-details">
+  <h2>{{ suggestion.title }}</h2>
+  <p><strong>Description:</strong> {{ suggestion.description }}</p>
+  <p><strong>Catégorie:</strong> {{ suggestion.category }}</p>
+  <p><strong>Date:</strong> {{ suggestion.date | date }}</p>
+  <p><strong>Status:</strong> {{ suggestion.status }}</p>
+  <p><strong>Nombre de Likes:</strong> {{ suggestion.nbLikes }}</p>
+
+  <button (click)="backToList()">Back to List</button>
+</div>
+
+<ng-template #notFound>
+  <p>Suggestion non trouvée.</p>
+  <button (click)="backToList()">Back to List</button>
+</ng-template>
