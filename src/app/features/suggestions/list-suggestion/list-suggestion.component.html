@@ -19,7 +19,6 @@
   </div>
 
   <p class="description">{{ s.description }}</p>
-
   <!-- Status Badge -->
   <span
     class="status"
@@ -40,5 +39,6 @@
     <button (click)="addToFavorites(s)" class="btn favorite-btn">
       Ajouter aux favoris
     </button>
+    <button (click)="goToDetails(s.id)">Details</button>
   </div>
 </div>

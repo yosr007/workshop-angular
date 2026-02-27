@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Suggestion } from '../../models/suggestion';
+import { Suggestion } from '../../../models/suggestion';
+import { Router, ActivatedRoute } from '@angular/router'; 
+
 
 @Component({
   selector: 'app-list-suggestion',
@@ -71,4 +73,10 @@ export class ListSuggestionComponent {
       s.category.toLowerCase().includes(search)
     );
   }
+  
+  // Injection du Router et du ActivatedRoute
+  constructor(private router: Router, private route: ActivatedRoute) { }
+  goToDetails(id: number): void {
+  this.router.navigate(['/suggestions', id]);
+}
 }
