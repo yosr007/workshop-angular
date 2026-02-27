@@ -1,0 +1,44 @@
+<h2 class="title">Liste des suggestions</h2>
+
+<!-- Search Bar -->
+<input
+  type="text"
+  placeholder="Rechercher une suggestion"
+  [(ngModel)]="searchText"
+  class="search-bar"
+/>
+
+<div *ngFor="let s of filteredSuggestions" class="suggestion-card">
+
+  <div class="header">
+    <h3>{{ s.title }}</h3>
+    <div>
+      <span class="category">{{ s.category }}</span>
+      <span class="date">{{ s.date | date: 'dd MMM yyyy' }}</span>
+    </div>
+  </div>
+
+  <p class="description">{{ s.description }}</p>
+
+  <!-- Status Badge -->
+  <span
+    class="status"
+    [ngClass]="{
+      acceptee: s.status === 'acceptee',
+      refusee: s.status === 'refusee',
+      en_attente: s.status === 'en_attente'
+    }"
+  >
+    {{ s.status | uppercase }}
+  </span>
+
+  <!-- Buttons: hide if refused -->
+  <div *ngIf="s.status !== 'refusee'" class="actions">
+    <button (click)="like(s)" class="btn like-btn">
+      👍 Like {{ s.nbLikes }}
+    </button>
+    <button (click)="addToFavorites(s)" class="btn favorite-btn">
+      Ajouter aux favoris
+    </button>
+  </div>
+</div>

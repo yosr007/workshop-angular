@@ -1,0 +1,52 @@
+/* Header background and spacing */
+.header {
+  background-color: #223445; /* Dark blue/navy */
+  padding: 12px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+/* Container to center content and space between */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo text style */
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Navigation list */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+/* Navigation links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background-color: #3a5068;
+}
+
+/* Active link */
+.nav-link.active {
+  background-color: #0d6efd; /* Bootstrap blue */
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.5);
+}
