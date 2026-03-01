@@ -11,13 +11,15 @@ import { SuggestionDetailsComponent } from './suggestion-details/suggestion-deta
 import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddSuggestionComponentComponent } from './add-suggestion-component/add-suggestion-component.component';
 
 @NgModule({
   declarations: [
     SuggestionsComponent,
     SuggestionDetailsComponent,
     SuggestionFormComponent,
-    ListSuggestionComponent  
+    ListSuggestionComponent,
+    AddSuggestionComponentComponent  
   ],
   imports: [
     CommonModule,

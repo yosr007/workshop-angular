@@ -8,6 +8,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { ListSuggestionComponent } from './features/suggestions/list-suggestion/list-suggestion.component';
 import { HomeComponent } from './core/home/home.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
     AppRoutingModule,
     FormsModule  
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

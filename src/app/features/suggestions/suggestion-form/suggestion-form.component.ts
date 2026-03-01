@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Suggestion } from '../../../models/suggestion';
-
+import { ActivatedRoute } from '@angular/router';
+import { SuggestionService } from '../../../core/Services/suggestion.service';
+SuggestionService
 @Component({
   selector: 'app-suggestion-form',
   templateUrl: './suggestion-form.component.html',
@@ -10,7 +12,9 @@ import { Suggestion } from '../../../models/suggestion';
 })
 export class SuggestionFormComponent {
 
+  id!: number;
   suggestionForm!: FormGroup;
+  suggestion!: Suggestion;
 
   categories: string[] = [
     'Infrastructure et bâtiments',
@@ -24,7 +28,12 @@ export class SuggestionFormComponent {
     'Accessibilité',
     'Autre'
   ];
-   constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(
+  private service: SuggestionService,
+  private router: Router,
+  private actR: ActivatedRoute,
+  private fb: FormBuilder
+) {}
 
   ngOnInit(): void {
     this.suggestionForm = this.fb.group({
@@ -34,25 +43,40 @@ export class SuggestionFormComponent {
       date: [{ value: new Date(), disabled: true }], // readonly
       status: [{ value: 'en attente', disabled: true }], // readonly
     });
+    this.id = this.actR.snapshot.params['id'];
+    this.service.getSuggestionById1(this.id).subscribe((data) => {
+    this.suggestion = data;
+    this.suggestionForm.patchValue(this.suggestion);
+});
   }
   submit(): void {
-    if (this.suggestionForm.valid) {
-      const newSuggestion: Suggestion = {
-        id: Date.now(), // auto-incrément simulé
-        title: this.suggestionForm.value.title,
-        description: this.suggestionForm.value.description,
-        category: this.suggestionForm.value.category,
-        date: new Date(),
-        status: 'en attente',
-        nbLikes: 0
-      };
-      console.log('Nouvelle suggestion:', newSuggestion);
-      alert('Suggestion ajoutée avec succès !');
-      this.router.navigate(['/suggestions']); // retour à la liste
-    }
-  }
+
+if(this.id){
+
+// UPDATE
+this.service.updateSuggestion({
+id: this.id,
+...this.suggestionForm.value
+})
+.subscribe(()=>{
+this.router.navigate(['/suggestions']);
+});
+
+}else{
+
+// ADD
+this.service.addSuggestion(this.suggestionForm.value)
+.subscribe(()=>{
+this.router.navigate(['/suggestions']);
+});
+
+}
+
+}
 
   backToList(): void {
     this.router.navigate(['/suggestions']);
   }
+
+  
 }
