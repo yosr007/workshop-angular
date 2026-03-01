@@ -5,7 +5,8 @@
   <p><strong>Date:</strong> {{ suggestion.date | date }}</p>
   <p><strong>Status:</strong> {{ suggestion.status }}</p>
   <p><strong>Nombre de Likes:</strong> {{ suggestion.nbLikes }}</p>
-
+  
+  <button (click)="goToUpdate(suggestion.id)">Update</button>
   <button (click)="backToList()">Back to List</button>
 </div>
 
